@@ -1,7 +1,10 @@
-# Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based CCRCC Grading (nuclei-guided grade classification)
+# Nuclei-Guided Grade Classification with Vision Transformers
 
 
-Reference implementation for the MICCAI 2026 paper of the same name.
+
+
+Reference implementation for the MICCAI 2026 paper:
+# Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based CCRCC Grading
 
 WHO/ISUP grading of clear cell renal cell carcinoma is decided by nuclear
 morphology, but the two families of automated methods that address it do not
