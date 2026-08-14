@@ -23,7 +23,7 @@ under an identical protocol.
 
 Preprint: PENDING ARXIV LINK
 
-Published version: forthcoming in the MICCAI 2026 proceedings (Springer LNCS).
+Published version: forthcoming in the MICCAI COMPAYL++ 2026 proceedings (Springer LNCS).
 Springer production runs several months behind acceptance. Once the DOI is
 issued, please replace the line above with the Springer link and keep the arXiv
 link as a secondary reference.
@@ -205,14 +205,34 @@ Comparison against the two external reference points:
 | Best multiplicative modulation configuration | 0.9160 | 0.9220 |
 
 Sensitivity to perturbation of the classification maps, best three
-configurations. Balanced accuracy stays above the RGB-only baseline of 0.707
-across the entire tested range, and degrades monotonically.
+configurations, averaged over seeds 7, 12, 14 and 313. Both segmentation and
+classification errors are injected simultaneously. Values below are digitized
+from Fig. 3 of the paper; the 0% points differ slightly from Table 2 because
+Table 2 reports a single best run rather than the seed average.
 
-| Combined perturbation level | Balanced accuracy of MM configs 1 to 3 |
-| --- | --- |
-| 0% | 0.907 to 0.916 |
-| 30% | 0.82 to 0.86 |
-| 60% | above 0.707, the RGB-only baseline |
+![Sensitivity to perturbation](figures/sensitivity_curves.png)
+
+Test balanced accuracy:
+
+| Perturbation | M1 (a=0.85, O=0.5) | M2 (a=0.65, O=0.3) | M3 (a=0.7, O=0.35) |
+| --- | --- | --- | --- |
+| 0% | 0.919 | 0.906 | 0.905 |
+| 20% | 0.865 | 0.830 | 0.877 |
+| 40% | 0.775 | 0.774 | 0.795 |
+| 60% | 0.716 | 0.712 | 0.730 |
+
+Test F1:
+
+| Perturbation | M1 | M2 | M3 |
+| --- | --- | --- | --- |
+| 0% | 0.920 | 0.935 | 0.927 |
+| 20% | 0.884 | 0.870 | 0.901 |
+| 40% | 0.834 | 0.836 | 0.844 |
+| 60% | 0.792 | 0.778 | 0.788 |
+
+All three configurations stay above the RGB-only baseline (0.707 balanced
+accuracy, 0.761 F1) through 60% combined perturbation, and degrade
+monotonically rather than collapsing.
 
 ## Findings
 
