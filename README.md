@@ -2,6 +2,7 @@
 
 
 
+## Paper
 
 Reference implementation for the MICCAI 2026 paper:
 ## Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based CCRCC Grading
@@ -23,7 +24,6 @@ implemented, classification map channel concatenation (HEC) and multiplicative
 modulation (MM), and both are evaluated against an RGB-only baseline trained
 under an identical protocol.
 
-## Paper
 
 Preprint: PENDING ARXIV LINK
 
