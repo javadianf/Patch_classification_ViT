@@ -1,4 +1,5 @@
 # Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based CCRCC Grading
+#(nuclei-guided grade classification)
 
 Reference implementation for the MICCAI 2026 paper of the same name.
 
