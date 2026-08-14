@@ -210,7 +210,7 @@ classification errors are injected simultaneously. Values below are digitized
 from Fig. 3 of the paper; the 0% points differ slightly from Table 2 because
 Table 2 reports a single best run rather than the seed average.
 
-![Sensitivity to perturbation](figures/balanced_f1_vertical.png)
+![Sensitivity to perturbation](figures/balanced_f1_horizontal.png)
 
 Test balanced accuracy:
 
