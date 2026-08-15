@@ -55,11 +55,11 @@ elsewhere in the codebase.
 | Original dataset | 66.3% | 23.0% | 10.7% |
 | Training set after augmentation | 35.7% | 35.1% | 29.2% |
 
-Data are split 70 / 10 / 20 into train, validation and test with stratified
-sampling. Augmentation is horizontal and vertical flips applied to minority
-classes in the training set only. Validation and test keep the original
-imbalance, so balanced accuracy measured on them still reflects real class
-prevalence.
+Data are split 70 / 10 / 20 into train, validation and test. Augmentation is
+horizontal and vertical flips applied to minority classes in the training set
+only. The test set comprises 202 patches (114 grade 1, 55 grade 2, 33 grade 3)
+and is not augmented. Balanced accuracy is used throughout so that each grade
+contributes equally regardless of its frequency.
 
 Single-pathologist annotation means inter-observer variability is not captured.
 The claim being tested is the methodological advantage of semantic-guided
@@ -204,12 +204,12 @@ Comparison against the two external reference points:
 
 | Approach | Balanced accuracy | F1 |
 | --- | --- | --- |
-| Max-voting aggregation of nuclei grades [1] | 0.427 | not reported |
+| Max-voting aggregation of nuclei grades, computed here on our test set | 0.427 | not reported |
 | RGB-only ViT baseline, identical training protocol | 0.7071 | 0.7611 |
 | Best multiplicative modulation configuration | 0.9160 | 0.9220 |
 
 Sensitivity to perturbation of the classification maps, best three
-configurations, averaged over seeds 7, 12, 14 and 313. Both segmentation and
+configurations, averaged over three random seeds. Both segmentation and
 classification errors are injected simultaneously. Values below are digitized
 from Fig. 3 of the paper; the 0% points differ slightly from Table 2 because
 Table 2 reports a single best run rather than the seed average.
@@ -253,7 +253,8 @@ the transformer unaltered while the semantic emphasis rides on top of them.
 signal.** This is the clearest ablation in the table. The two configurations
 with `O = 0` fall to 0.7889 and 0.7703 balanced accuracy, barely above the
 0.7071 RGB-only baseline, despite having the most aggressive modulation
-strengths in the sweep (`alpha` 0.80 and 0.90, `w3` up to 2.5). Removing the
+strengths in the sweep (`alpha` 0.80 and 0.90, `w3` at the top of its range).
+Removing the
 overlay leaves spatial segmentation information intact but eliminates explicit
 class distinction: the model can see where the nuclei are but not what grade
 they are. Intensity modulation alone is close to a general spatial attention
@@ -314,7 +315,7 @@ rule cannot express.
 ```
 ccrcc_grading/
   config.py               Paths and model name, all overridable by environment variable
-  data_handler.py         Label loading, stratified seed splits, dataset and loader construction
+  data_handler.py         Label loading, per-seed splits, dataset and loader construction
   hec.py                  Colour deconvolution and HEC channel concatenation
   modulation.py           CCRCCPreprocessor, the multiplicative modulation methods
   modulation_configs.py   The swept configurations, one per results-table row
